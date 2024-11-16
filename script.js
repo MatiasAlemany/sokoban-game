@@ -104,7 +104,7 @@ function forEachIn(object, action) {
       ]
     },
     {
-      boulders: 8,
+      boulders: 5,
       field: [
         "  #######     ",
         "###     ###   ",
@@ -120,7 +120,7 @@ function forEachIn(object, action) {
       ]
     },
     {
-      boulders: 6,
+      boulders: 5,
       field: [
         "     ######   ",
         "#####      ###",
