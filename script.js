@@ -84,7 +84,7 @@ function removeHandler(object) {
 
 const levels = [
   {
-    boulders: 1,
+    boulders: 10,
     field: [
       "######  ##### ",
       "#    #  #   # ",
