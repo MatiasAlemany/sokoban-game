@@ -87,7 +87,7 @@ function forEachIn(object, action) {
 
   const levels = [
     {
-      boulders: 10,
+      boulders: 1,
       field: [
         "######  ##### ",
         "#    #  #   # ",
@@ -228,6 +228,7 @@ function forEachIn(object, action) {
     );
   };
   SokobanField.prototype.won = function () {
+    
      return this.bouldersToGo <= 0;
   };
 
@@ -280,9 +281,15 @@ function forEachIn(object, action) {
 
   const push = new Audio("./audio/beep1.mp3");
   const boulderSound = new Audio("./audio/bell2.mp3");
+  const music = new Audio("./audio/music.mp3");
+  const win = new Audio("./audio/coompleted.mp3");
 
   push.volume = 0.1;
   boulderSound.volume = 1;
+  music.volume = 0.1;
+  music.loop = true;
+  music.play();
+
 
 
   function SokobanGame(levels, place) {
@@ -335,6 +342,7 @@ function forEachIn(object, action) {
       if (this.field.won()) {
         if (this.level < this.levels.length - 1) {
           alert("Excellent! Going to the next level.");
+          win.play();       
           this.level++;
           this.resetLevel();
         } else {
