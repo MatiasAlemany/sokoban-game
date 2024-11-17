@@ -128,7 +128,7 @@ function forEachIn(object, action) {
         "# 0 @   0 #* #",
         "###   ##   # #",
         "  ###  # 0 # #",
-        "   #  0 ##   #",
+        "   #  0 #    #",
         "   #      ####",
         "   ########   "
       ]
@@ -286,9 +286,19 @@ function forEachIn(object, action) {
 
   push.volume = 0.1;
   boulderSound.volume = 1;
-  music.volume = 0.1;
+  music.volume = 0.2;
   music.loop = true;
   music.play();
+
+  // Activates the music when the player activates any key
+  document.addEventListener("keydown", function startMusic() {
+    music.play().catch((error) => {
+        console.error("Music problem:", error);
+    });
+
+    // Eliminates the event listener when the player leaves the page
+    document.removeEventListener("keydown", startMusic);
+});
 
 
 
