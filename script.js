@@ -292,6 +292,11 @@ document.addEventListener("keydown", function startMusic() {
   document.removeEventListener("keydown", startMusic);
 });
 
+function winMusic() {
+  win.play().catch((error) => {
+    console.error("Music problem:", error);
+  })}
+
 function SokobanGame(levels, place) {
   this.levels = levels;
   let newGame = dom("BUTTON", null, "New game");
@@ -342,7 +347,7 @@ SokobanGame.prototype.keyDown = function (event) {
     if (this.field.won()) {
       if (this.level < this.levels.length - 1) {
         alert("Excellent! Going to the next level.");
-        win.play();
+        winMusic();
         this.level++;
         this.resetLevel();
       } else {
