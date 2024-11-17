@@ -346,8 +346,8 @@ SokobanGame.prototype.keyDown = function (event) {
     this.updateStatus();
     if (this.field.won()) {
       if (this.level < this.levels.length - 1) {
-        alert("Excellent! Going to the next level.");
         winMusic();
+        alert("Excellent! Going to the next level.");
         this.level++;
         this.resetLevel();
       } else {
