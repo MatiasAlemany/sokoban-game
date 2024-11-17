@@ -244,15 +244,16 @@ function forEachIn(object, action) {
       targetSquare = this.squares[targetPos.y][targetPos.x];
     console.log(targetSquare);
     
-
     //Condicionales dependiendo si hay boulders o espacios vacios.
     if (targetSquare.content == "boulder") {
       const pushPos = targetPos.add(direction),
-        pushSquare = this.squares[pushPos.y][pushPos.x];
+        pushSquare = this.squares[pushPos.y][pushPos.x]
       if (pushSquare.content == "empty") {
         targetSquare.setContent("empty");
         pushSquare.setContent("boulder");
+        push.play();
       } else if (pushSquare.content == "exit") {
+        boulderSound.play();
         targetSquare.setContent("empty");
         this.bouldersToGo--;
       }
@@ -267,11 +268,22 @@ function forEachIn(object, action) {
     }
   };
 
+  
+
   function method(object, name) {
     return function () {
       object[name].apply(object, arguments);
     };
   }
+
+  //SOKOBAN SOUNDS
+
+  const push = new Audio("./audio/beep1.mp3");
+  const boulderSound = new Audio("./audio/bell2.mp3");
+
+  push.volume = 0.1;
+  boulderSound.volume = 1;
+
 
   function SokobanGame(levels, place) {
     this.levels = levels;
